@@ -2,25 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Value from './src/components/Value';
 import RingProgress from './src/components/RingProgress';
-import AppleHealthKit, {
-  HealthInputOptions,
-  HealthKitPermissions,
-  HealthUnit,
-} from 'react-native-health';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import useHealthData from './src/hooks/useHealthData';
 import { AntDesign } from '@expo/vector-icons';
-
-const permissions: HealthKitPermissions = {
-  permissions: {
-    read: [
-      AppleHealthKit.Constants.Permissions.Steps,
-      AppleHealthKit.Constants.Permissions.FlightsClimbed,
-      AppleHealthKit.Constants.Permissions.DistanceWalkingRunning,
-    ],
-    write: [],
-  },
-};
 
 const STEPS_GOAL = 10_000;
 

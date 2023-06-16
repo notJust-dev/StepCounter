@@ -1,7 +1,6 @@
 import AppleHealthKit, {
   HealthInputOptions,
   HealthKitPermissions,
-  HealthUnit,
 } from 'react-native-health';
 import { useEffect, useState } from 'react';
 import { Platform } from 'react-native';
@@ -12,7 +11,6 @@ import {
   readRecords,
 } from 'react-native-health-connect';
 import { TimeRangeFilter } from 'react-native-health-connect/lib/typescript/types/base.types';
-import { floor } from 'react-native-reanimated';
 
 const permissions: HealthKitPermissions = {
   permissions: {
@@ -89,7 +87,7 @@ const useHealthData = (date: Date) => {
       }
       setDistance(results.value);
     });
-  }, [hasPermissions]);
+  }, [hasPermissions, date]);
 
   // Android - Health Connect
   const readSampleData = async () => {
@@ -139,7 +137,7 @@ const useHealthData = (date: Date) => {
       return;
     }
     readSampleData();
-  });
+  }, [date]);
 
   return {
     steps,
